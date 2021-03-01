@@ -1,9 +1,11 @@
-console.log(10)
-$(document).on("turbolinks:load", function() {
-	var canvas = document.getElementById("main_canvas");
-	var ctx = canvas.getContext("2d");
-});
+var canvas
+var ctx
 var step = 10;
+$(document).ready(function() {
+	canvas = document.getElementById("main_canvas");
+	ctx = canvas.getContext("2d");
+	start();
+});
 class Block {
 	constructor(_size, _color) {
 		this.width = _size;
@@ -53,8 +55,8 @@ class BigBlock extends Block {
 class SmallBlock extends Block {
 	constructor(_size, _color) {
 		super(_size, _color);
-		this.x = Math.floor(Math.random() * canvas.width - _size)
-		this.y = -5 
+		this.x = Math.floor(Math.random() * (canvas.width - _size));
+		this.y = -_size 
 		};
 	fall(vx, vy) {
 		ctx.clearRect(this.x, this.y, this.width, this.height)
@@ -68,7 +70,6 @@ class SmallBlock extends Block {
 
 
 function start() {
-	console.log("1")
 	var eater = new BigBlock(20, "pink");
 	var smallBlocks = [];
 	setInterval(function() { game(eater, smallBlocks); }, 1000/16);
@@ -99,4 +100,3 @@ function game(e, smallBlocks) {
 };
 
 
-start();
