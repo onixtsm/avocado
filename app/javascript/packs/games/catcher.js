@@ -4,7 +4,6 @@ var step = 10;
 $(document).ready(function() {
 	canvas = document.getElementById("main_canvas");
 	ctx = canvas.getContext("2d");
-	start();
 });
 class Block {
 	constructor(_size, _color) {
@@ -69,7 +68,7 @@ class SmallBlock extends Block {
 
 
 
-function start() {
+export function start() {
 	var eater = new BigBlock(20, "pink");
 	var smallBlocks = [];
 	setInterval(function() { game(eater, smallBlocks); }, 1000/16);
