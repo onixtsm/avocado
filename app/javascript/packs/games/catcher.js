@@ -1,6 +1,7 @@
 var canvas
 var ctx
 var step = 10;
+console.log(1)
 $(document).ready(function() {
 	canvas = document.getElementById("main_canvas");
 	ctx = canvas.getContext("2d");
@@ -68,7 +69,9 @@ class SmallBlock extends Block {
 
 
 
-export function start() {
+window.start = function() {
+	$("[name='button']").hide();
+	console.log(2)
 	var eater = new BigBlock(20, "pink");
 	var smallBlocks = [];
 	setInterval(function() { game(eater, smallBlocks); }, 1000/16);
