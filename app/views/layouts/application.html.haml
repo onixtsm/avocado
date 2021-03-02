@@ -7,6 +7,10 @@
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload'
-    = javascript_pack_tag controller_name + "/" + action_name
+    - if File.exist? ("#{Rails.root}/app/javascript/packs#{controller_name}")
+      - js_source = "#{Rails.root}/app/javascript/packs#{controller_name}"
+      - if File.exist? ("#{js_source}/#{action_name}")
+        - js_source = js_source + "/" + action_name
+      = javascript_pack_tag js_source
   %body
     = yield
