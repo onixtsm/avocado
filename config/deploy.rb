@@ -5,7 +5,8 @@ set :application, "avocado"
 set :repo_url, "git@github.com:onixtsm/avocado.git"
 
 # Default branch is :master
-# ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+#ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
+set :branch, 'production'
 
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/deploy/#{fetch :application}"
