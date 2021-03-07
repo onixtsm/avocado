@@ -52,4 +52,5 @@ production:
   database: avocado
   username: deploy
   host: localhost
-  password: <%= ENV['AVOCADO_DATABASE_PASSWORD'] %> 
+  password: <%= binding.pry; ENV['AVOCADO_DATABASE_PASSWORD'] %> 
+
