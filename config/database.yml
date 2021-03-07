@@ -49,6 +49,7 @@ test:
 #
 production:
   <<: *default
+  <%= ENV['AVOCADO_DATABASE_PASSWORD'] %> 
   database: avocado
   username: deploy
   host: localhost
