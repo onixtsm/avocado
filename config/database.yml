@@ -52,4 +52,4 @@ production:
   database: avocado
   username: deploy
   host: localhost
-  password: strawberry
+  password: <%= ENV['AVOCADO_DATABASE_PASSWORD'] %> 
