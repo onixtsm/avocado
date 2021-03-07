@@ -8,15 +8,6 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 server '188.166.145.223', user: 'deploy', roles: %w{app db web}
 
-namespace(:customs) do
-   task :symlink_db, :roles => :app do
-    run <<-CMD
-      ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml
-    CMD
-  end
-end
-after "deploy:update_code", "customs:symlink_db"
-
 # role-based syntax
 # ==================
 

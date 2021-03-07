@@ -23,6 +23,17 @@ namespace :deploy do
     end
   end
 end
+
+
+namespace(:customs) do
+   task :symlink_db, :roles => :app do
+    run <<-CMD
+      ln -nfs #{shared_path}/config/database.yml #{release_path}/config/database.yml
+    CMD
+  end
+end
+after "deploy:update_code", "customs:symlink_db"
+
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
 
