@@ -1,8 +1,6 @@
-var canvas
-var ctx
+var canvas, ctx, points, HP, eater
 var step = 10;
-console.log(1)
-$(document).ready(function() {
+$().ready(function() {
 	canvas = document.getElementById("main_canvas");
 	ctx = canvas.getContext("2d");
 });
@@ -34,8 +32,8 @@ class BigBlock extends Block {
 		this.x = canvas.width / 2 - _size / 2;
 		this.y = canvas.height - _size / 2;
 		};
+	//movement
 	move(key) {
-
 		ctx.clearRect(this.x, this.y, this.width, this.height);
 		if (!(this.x - step < 0)) {
 			if (key.keyCode == 37 || key.keyCode == 72 || key.keyCode == 65) {
@@ -67,35 +65,57 @@ class SmallBlock extends Block {
 	};
 };
 
+function winPoint() {
+	points++
+	//$("pointCounter").html(points + " points")
+	(document).getElementById("pointCounter").innerHTML = points + " points"
+}
 
+function loseHP() {
+	HP--
+	//$("HPcounter").html(HP);
+	(document).getElementById("HPcounter").innerHTML = HP
+};
 
 window.start = function() {
+	points = 0;
+	HP = 3;
 	$("[name='button']").hide();
-	console.log(2)
-	var eater = new BigBlock(20, "pink");
+	//$("pointCounter").html(points + " points")
+	//$("HPcounter").html(HP);
+	eater = new BigBlock(20, "pink");
 	var smallBlocks = [];
-	setInterval(function() { game(eater, smallBlocks); }, 1000/16);
-	addEventListener("keydown", function(key) { eater.move(key) } ); 
+	interval = setInterval(function() { game(eater, smallBlocks); }, 1000/16);
+	document.addEventListener("keydown", function(key) { eater.move(key) } , true); 
 }
 function game(e, smallBlocks) {
-	e.draw();
+	eater.draw();
 	if (smallBlocks.length == 0) {
 		var block = new SmallBlock(10, "red");
 		smallBlocks.push(block);
-		console.log(block)
 	}
 	for (i = 0; i < smallBlocks.length; i++) {
+		if (HP == 0) {
+			clearInterval(interval);
+			$("[name='button']").show();
+			HP = 3;
+			points = 0
+			eater = undefined;
+			break;
+		}
 		let b = smallBlocks[i]
 		b.fall(0, 5);
-		if (b.x + b.width >= e.x && b.x <= e.x + e.width) {
-			if (b.y >= e.y && b.y <= e.y) {
+		if (b.x + b.width >= eater.x && b.x <= eater.x + eater.width) {
+			if (b.y >= eater.y && b.y <= eater.y) {
 				b.remove();
 				smallBlocks.splice(i, 1);
+				winPoint();
 			};
 		};
 		if (b.y >= canvas.height) {
 			b.remove();
 			smallBlocks.splice(i, 1);
+			loseHP();
 
 		};
 	};
