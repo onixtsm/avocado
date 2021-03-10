@@ -1,8 +1,13 @@
-var canvas, ctx, points, HP, eater
+var canvas, ctx, points, HP, eater, started;
 var step = 10;
 $().ready(function() {
 	canvas = document.getElementById("main_canvas");
 	ctx = canvas.getContext("2d");
+	document.addEventListener("keydown", function(key) { 
+		if (started) {
+			eater.move(key);
+		}
+	}); 
 });
 class Block {
 	constructor(_size, _color) {
@@ -45,6 +50,7 @@ class BigBlock extends Block {
 				this.x += step;
 			}
 		};
+		key.preventDefault();
 		this.draw();
 		
 	};
@@ -65,43 +71,31 @@ class SmallBlock extends Block {
 	};
 };
 
-function winPoint() {
-	points++
-	//$("pointCounter").html(points + " points")
-	(document).getElementById("pointCounter").innerHTML = points + " points"
-}
-
-function loseHP() {
-	HP--
-	//$("HPcounter").html(HP);
-	(document).getElementById("HPcounter").innerHTML = HP
-};
-
 window.start = function() {
+	started = true;
+	ctx.clearRect(0, 0, canvas.width, canvas.height)
 	points = 0;
 	HP = 3;
 	$("[name='button']").hide();
-	//$("pointCounter").html(points + " points")
-	//$("HPcounter").html(HP);
 	eater = new BigBlock(20, "pink");
 	var smallBlocks = [];
-	interval = setInterval(function() { game(eater, smallBlocks); }, 1000/16);
-	document.addEventListener("keydown", function(key) { eater.move(key) } , true); 
+	interval = setInterval(function() { game(smallBlocks); }, 1000/16);
+	canvas.focus();
 }
-function game(e, smallBlocks) {
+function game(smallBlocks) {
 	eater.draw();
+	$("#pointCounter").text(points);
+	$("#HPcounter").text(HP);
 	if (smallBlocks.length == 0) {
 		var block = new SmallBlock(10, "red");
 		smallBlocks.push(block);
 	}
 	for (i = 0; i < smallBlocks.length; i++) {
 		if (HP == 0) {
+			started = !started
 			clearInterval(interval);
 			$("[name='button']").show();
-			HP = 3;
-			points = 0
-			eater = undefined;
-			break;
+			return;
 		}
 		let b = smallBlocks[i]
 		b.fall(0, 5);
@@ -109,13 +103,13 @@ function game(e, smallBlocks) {
 			if (b.y >= eater.y && b.y <= eater.y) {
 				b.remove();
 				smallBlocks.splice(i, 1);
-				winPoint();
+				points++
 			};
 		};
 		if (b.y >= canvas.height) {
 			b.remove();
 			smallBlocks.splice(i, 1);
-			loseHP();
+			HP--
 
 		};
 	};
