@@ -1,6 +1,12 @@
 %h1 Catcher game
 %p Catch bloks which are failling
-%canvas#main_canvas
-=button_tag "Start!", class: 'start_button', name: 'button', onclick: 'start();'
-%p#pointCounter.point_counter 
-%p#HPcounter.HP_counter
+.games_canvas
+ %canvas#main_canvas
+ =button_tag "Start!", class: 'start_button', name: 'button', onclick: 'start();'
+ .info_bar
+  .HP
+   %p Lives
+   %p#HPcounter.HP_counter 0
+  .points
+   %p Points 
+   %p#pointCounter.point_counter 0
