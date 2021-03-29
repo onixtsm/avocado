@@ -3,8 +3,66 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 //cathcer
+
+* {
+	box-sizing: border-box;
+}
+
+
+.games_canvas {
+	position: relative;
+	width: 400px;
+	height: 400px;
+	display: flex;
+	justify-content: center;
+	margin: 0;
+	box-sizing: border-box;
+}
+
 #main_canvas {
 	background:	cyan;
-	width:		400px;
-	height:		400px;
+	width:		100%;
+	height:		100%;
+	position: absolute;
 }
+
+.start_button {
+	margin: auto;
+	position: absolute;
+	top: 50%;
+	transform: translate(0, -50%);
+	border: solid 2px brown;
+	background-color: #f7c100;
+	border-radius: 40%;
+	font-size: 1.2em;
+	padding: 1.2em;
+	
+}
+.start_button:hover {
+	cursor: pointer;
+	background-color: #f7a300;
+}
+
+.info_bar {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	display: flex;
+	justify-content: space-between;	
+	margin: 0.7em;
+}
+
+.points, .HP {
+	margin: 5px;
+	p {
+		margin: 0;
+		padding: 0;
+	}
+}
+
+.points {
+	text-align: right;
+}
+
