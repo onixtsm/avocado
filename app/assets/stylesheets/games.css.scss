@@ -4,18 +4,12 @@
 
 //cathcer
 
-* {
-	box-sizing: border-box;
-}
-
-
 .games_canvas {
 	position: relative;
 	width: 400px;
 	height: 400px;
 	display: flex;
 	justify-content: center;
-	margin: 0;
 	box-sizing: border-box;
 }
 
@@ -44,14 +38,12 @@
 }
 
 .info_bar {
-	margin: 0;
-	padding: 0;
 	width: 100%;
 	position: absolute;
 	top: 0;
 	display: flex;
 	justify-content: space-between;	
-	margin: 0.7em;
+	margin-top: 0.7em;
 }
 
 .points, .HP {
