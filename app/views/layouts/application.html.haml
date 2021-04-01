@@ -2,9 +2,10 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title onix's website
     = csrf_meta_tags
     = csp_meta_tag
+    %title onix's website
+    = content_for :head
     = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
     = stylesheet_link_tag params[:controller]
     = javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload'
