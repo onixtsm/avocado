@@ -17,4 +17,5 @@
         - js_source += "/" + action_name
       = javascript_pack_tag js_source
   %body
+    = render('shared/nav') unless action_name == "index" #short time fix. Have to use parametrs instead
     = yield

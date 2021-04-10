@@ -1,0 +1,31 @@
+nav {
+        width: 100%;
+        display: block;
+        background-color: gray;
+        height: auto;
+        overflow: hidden;
+}
+
+nav ul {
+        list-style-type: none;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+}
+
+li {
+        float: left;
+        border-right: black 1px solid;
+}
+
+li:last-child {
+        border: none;
+}
+
+li a {
+        color: white;
+        display: block;
+        text-align: center;
+        padding: 1.2em;
+        text-decoration: none;
+}
