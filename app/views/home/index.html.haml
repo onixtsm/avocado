@@ -1,5 +1,4 @@
 = render 'shared/header'
-.heading Hi
-%p Welcome to my website
-%p It's still under construction
-= link_to  "game", "games/catcher" 
+%h2.heading Future
+- $text.each do |t| 
+  %p.text= t
