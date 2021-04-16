@@ -11,11 +11,8 @@
     = javascript_packs_with_chunks_tag 'application', 'data-turbolinks-track': 'reload'
     - if File.exist? ("#{Rails.root}/app/javascript/packs/#{controller_name}.js")
       = javascript_pack_tag params[:controller]
-    - if File.exist? ("#{Rails.root}/app/javascript/packs/#{controller_name}") 
-      - js_source = controller_name
-      - if File.exist? ("#{Rails.root}/app/javascript/packs/#{controller_name}/#{action_name}.js")
-        - js_source += "/" + action_name
-      = javascript_pack_tag js_source
+    - if File.exist? ("#{Rails.root}/app/javascript/packs/#{controller_name}/#{action_name}.js")
+      = javascript_pack_tag params[:controller]+ "/" + params[:action]
   %body
-    = render('shared/nav') unless action_name == "index" #short time fix. Have to use parametrs instead
+    = render('shared/nav') #unless action_name == "index" #short time fix. Have to use parametrs instead
     = yield
