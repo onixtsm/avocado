@@ -14,11 +14,23 @@
 }
 
 #main_canvas {
-	background:	cyan;
+        border: solid black 2px;
+	background:	#fff;
 	width:		100%;
 	height:		100%;
 	position: absolute;
 }
+
+#other_canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: none;
+}
+
+
 
 .start_button {
 	margin: auto;
