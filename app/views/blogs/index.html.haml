@@ -1,9 +1,7 @@
 %h1 Listing blogs
 
 = form_with method: :get do |f|
-  = f.select :flair, @flairs, {},{onchange: "this.form.submit()"}
+  = f.select :flair, @flairs, {}, {onchange: "this.form.submit()"}
   = button_tag 'Clear', remote: true
 
 = render 'table'
-%br
-
