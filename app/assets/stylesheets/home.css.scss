@@ -1,6 +1,48 @@
 // Place all the styles related to the Home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+header {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+    color: #fff;
+    width: 100%;
+    min-height: 40vh;
+    font-size: 5em;
+    border-bottom: black solid 2px;
+    overflow: hidden;
+}
+
+.greeting_text {
+	text-align: center;
+	margin: auto;
+	font-weight: 700;
+}
+
+@media screen and (max-width: 900px) {
+	header {
+		max-height: 50vh;
+		font-size: 2em;
+	}
+
+
+}
+
+@media screen and (max-width: 350px) {
+	header {
+		display: block;
+		max-height: 100vh;
+		font-size: 2em;
+
+	}
+	.greeting_text {
+		text-align: center;
+		font-weight: 700;
+	}
+	.greeting_text p {
+		margin: auto;
+	}
+}
 
 
 h2 {
