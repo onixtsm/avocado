@@ -1,0 +1,11 @@
+%nav
+  %ul
+    - { "Home" => root_path,
+      "Game" => games_catcher_path,
+      "About" => home_about_path }.each do |k, v|
+      - if current_page?(v) 
+        %li.current= link_to k, v
+      - elsif request.path.include?(v) && v != root_path
+        %li.current= link_to k, v
+      - else 
+        %li= link_to k, v
