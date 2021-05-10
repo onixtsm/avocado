@@ -2,8 +2,16 @@
   .greeting_text
     %p Welcome to my website!
 
-= render 'shared/nav'
+//= render 'shared/nav'
 
 %h2.heading Future
 - $text.each do |t| 
   %p.text= t
+
+
+.post_box
+  - @blogs.each do |b|
+    %h2.post_heading= b.title
+    %p.post_tag= b.tag
+    %p.post_body= b.content
+    %p.post_author= b.name

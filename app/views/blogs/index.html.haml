@@ -1,0 +1,8 @@
+%h1 Listing blogs
+
+= form_with method: :get do |f|
+  = f.select :tag, @tags, {}, {}
+  = f.submit 'Search'
+  = link_to "Clear Search", request.path, class: "button"
+
+= render 'table'
