@@ -2,10 +2,11 @@ nav {
   width: 100%;
   height: auto;
   overflow: hidden;
+  border-bottom: #b00b69 2px solid;
+  box-shadow: #b00b69 0 0 10px;
 }
 
 nav ul {
-  list-style-type: none;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -16,6 +17,7 @@ nav ul {
 }
 
 li {
+  margin: auto 30px;
   display: inline-block;
 }
 
@@ -23,6 +25,7 @@ li a {
   display: block;
   padding: 1.2em;
   text-decoration: underline;
+  font-size: 1.3em;
   color: hsl(326, 88%, 37%);
 }
 
