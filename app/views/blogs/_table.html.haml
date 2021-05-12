@@ -4,7 +4,7 @@
       %th Name
       %th Title
       %th Content
-      %th Flair
+      %th Tag
 
   %tbody
     - @blogs.each do |blog|
@@ -12,7 +12,7 @@
         %td= blog.name
         %td= blog.title
         %td= blog.content
-        %td= blog.flair
+        %td= blog.tag
         %td= link_to 'Show', blog
         %td= link_to 'Edit', edit_blog_path(blog)
         %td= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
