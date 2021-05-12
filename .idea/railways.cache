@@ -1,14 +1,6 @@
                                   Prefix Verb   URI Pattern                                                                                       Controller#Action
                                     root GET    /                                                                                                 home#index
                               home_about GET    /home/about(.:format)                                                                             home#about
-                                   blogs GET    /blog(.:format)                                                                                   blogs#index
-                                         POST   /blog(.:format)                                                                                   blogs#create
-                                new_blog GET    /blog/new(.:format)                                                                               blogs#new
-                               edit_blog GET    /blog/:id/edit(.:format)                                                                          blogs#edit
-                                    blog GET    /blog/:id(.:format)                                                                               blogs#show
-                                         PATCH  /blog/:id(.:format)                                                                               blogs#update
-                                         PUT    /blog/:id(.:format)                                                                               blogs#update
-                                         DELETE /blog/:id(.:format)                                                                               blogs#destroy
                                    games GET    /games(.:format)                                                                                  games#index
                            games_catcher GET    /games/catcher(.:format)                                                                          games#catcher
            rails_postmark_inbound_emails POST   /rails/action_mailbox/postmark/inbound_emails(.:format)                                           action_mailbox/ingresses/postmark/inbound_emails#create
