@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # Blog class
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy]
@@ -12,7 +13,8 @@ class BlogsController < ApplicationController
   def index
     @blogs = Blog.order('created_at desc')
 
-    return params[:tag].blank?
+    return if params[:tag].blank?
+
     @blogs = @blogs.where(tag: params[:tag])
 
     respond_to do |format|
