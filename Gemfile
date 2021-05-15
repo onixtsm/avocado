@@ -27,10 +27,14 @@ group :development, :test do
 end
 
 group :development do
+  gem 'awesome_print'
+  #  gem 'bullet'
   gem 'listen', '~> 3.2'
+  gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'
+  #  gem 'xray-rails'
 end
 
 group :test do

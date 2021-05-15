@@ -10,14 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_04_23_113032) do
+ActiveRecord::Schema.define(version: 2021_04_30_113436) do
 
-  create_table "games", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.string "gamename"
-    t.string "username"
-    t.integer "score"
+  create_table "blogs", charset: "utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.string "title"
+    t.text "content"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "tag"
   end
+
+  create_table "games", charset: "utf8mb4", force: :cascade do |t|
+
 
 end
