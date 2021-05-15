@@ -22,6 +22,7 @@ gem 'webpacker', '~> 6.X'
 gem 'webrick'
 
 group :development, :test do
+  gem 'rubocop'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
 end

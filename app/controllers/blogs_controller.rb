@@ -1,21 +1,25 @@
 # frozen_string_literal: true
 
+# Blog class
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy]
   before_action :set_tags
 
   def set_tags
-    @tags = [['All', nil], 'Update', 'Opinion']
+    @tags = ['Update', 'Opinion', nil]
   end
 
   # GET /blogs or /blogs.json
   def index
     @blogs = Blog.order('created_at desc')
-    @blogs = @blogs.where(tag: params[:tag]) unless params[:tag].blank?
+    return if params[:tag].blank?
+
+    @blogs = @blogs.where(tag: params[:tag])
+
     respond_to do |format|
       format.html
-      format.js { render 'index.js.haml' }
-      format.json { render json: @blogs.to_json }
+      format.js
+      format.json
     end
   end
 
