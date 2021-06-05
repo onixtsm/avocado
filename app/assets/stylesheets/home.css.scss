@@ -3,14 +3,8 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 @import 'shared/colors';
+@import 'shared/container';
 
-
-.container {
-  display: flex;
-  justify-content: center;
-  max-width: 90%;
-  margin: auto;
-}
 
 .column {
   width: 50%;

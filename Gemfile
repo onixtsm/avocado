@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -20,18 +22,18 @@ gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 6.X'
 gem 'webrick'
+gem 'font-awesome-rails'
 
 group :development, :test do
-  gem 'rubocop'
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
   gem 'pry'
+  gem 'rubocop'
 end
 
 group :development do
   gem 'awesome_print'
   #  gem 'bullet'
   gem 'listen', '~> 3.2'
-  gem 'rubocop', require: false
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'web-console', '>= 3.3.0'

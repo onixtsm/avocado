@@ -1,8 +1,10 @@
 %h1 Listing blogs
 
-= form_with method: :get do |f|
-  = f.select :tag, @tags
-  = button_tag 'Find'
-  = link_to 'Clear', blogs_path, remote: true, class: 'button'
-
-= render 'table'
+.container
+  .tools
+    = form_with method: :get do |f|
+      = f.select :tag, @tags, {}, {class: 'select_bar'}
+      = button_tag 'Find'
+      = link_to 'Clear', blogs_path, remote: true, class: 'button'
+  .content
+    = render 'table'
