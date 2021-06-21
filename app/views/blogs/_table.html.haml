@@ -9,10 +9,10 @@
   %tbody
     - @blog.each do |blog|
       %tr
-        %td= blog.name
-        %td= blog.title
-        %td= blog.content
-        %td= blog.tag
+        %td= simple_format(blog.name)
+        %td= simple_format(blog.title)
+        %td= simple_format(blog.content)
+        %td= simple_format(blog.tag)
         %td= link_to 'Show', blog
         - if blog.user == current_user || current_user.try(:admin?)
           %td= link_to 'Edit', edit_blog_path(blog)

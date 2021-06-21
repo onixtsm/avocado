@@ -8,10 +8,11 @@
   = @blog.title
 %p
   %b Content:
-  = @blog.content
+  = simple_format(@blog.content)
 
-= link_to 'Edit', edit_blog_path(@blog)
-\|
-= link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' }
-\|
+- if @blog.user == current_user || current_user.try(:admin?)
+  = link_to 'Edit', edit_blog_path(@blog)
+  \|
+  = link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' }
+  \|
 = link_to 'Back', blogs_path
