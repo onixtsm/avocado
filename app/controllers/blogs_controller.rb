@@ -8,7 +8,11 @@ class BlogsController < ApplicationController
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def correct_user
-    @blog = current_user.blogs.find_by(params[:id])
+    if !current_user.admin?
+      @blog = current_user.blogs.find_by(params[:id])
+    else
+      @blog = Blog.find(params[:id])
+    end
     redirect_to blogs_path, notice: "No, no" if @blog.nil?
   end
 
