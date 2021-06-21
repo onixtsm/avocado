@@ -12,6 +12,7 @@ gem 'capistrano', '~> 3.11'
 gem 'capistrano-passenger', '~> 0.2.0'
 gem 'capistrano-rails', '~> 1.4'
 gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'
+gem 'devise'
 gem 'ed25519', '>= 1.2', '< 2.0'
 gem 'haml-rails', '~> 2.0'
 gem 'jbuilder', '~> 2.7'
@@ -22,7 +23,6 @@ gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 6.X'
 gem 'webrick'
-gem 'font-awesome-rails'
 
 group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]

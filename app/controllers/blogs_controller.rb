@@ -3,7 +3,14 @@
 # Blog class
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_tags
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
+  def correct_user
+    @blog = current_user.blogs.find_by(params[:id])
+    redirect_to blogs_path, notice: "No, no" if @blog.nil?
+  end
 
   def set_tags
     @tags = ['Update', 'Opinion', nil]
@@ -11,7 +18,7 @@ class BlogsController < ApplicationController
 
   # GET /blogs or /blogs.json
   def index
-    @blogs = Blog.order('created_at desc')
+    @blog = Blog.order('created_at desc')
     return if params[:tag].blank?
 
     @blogs = @blogs.where(tag: params[:tag])
@@ -28,7 +35,9 @@ class BlogsController < ApplicationController
 
   # GET /blogs/new
   def new
-    @blog = Blog.new
+
+    # @blog = Blog.new
+    @blog = current_user.blogs.new()
   end
 
   # GET /blogs/1/edit
@@ -36,8 +45,10 @@ class BlogsController < ApplicationController
 
   # POST /blogs or /blogs.json
   def create
-    @blog = Blog.new(blog_params)
-
+    # @blog = Blog.new(blog_params)
+    @blog = current_user.blogs.build(blog_params)
+    @blog.name = current_user.name
+    @blog.user_id = current_user.id
     respond_to do |format|
       if @blog.save
         format.html { redirect_to @blog, notice: 'Blog was successfully created.' }
@@ -80,6 +91,6 @@ class BlogsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def blog_params
-    params.require(:blog).permit(:name, :title, :content, :tag)
+    params.require(:blog).permit(:title, :content, :tag)
   end
 end

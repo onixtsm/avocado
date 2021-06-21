@@ -18,5 +18,8 @@
   .field
     = f.label :tag
     = f.select :tag, @tags
+  .field
+    = f.label :user_id
+    = f.number_field :user_id, value: current_user.id
   .actions
     = f.submit 'Save'

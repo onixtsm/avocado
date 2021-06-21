@@ -7,12 +7,13 @@
       %th Tag
 
   %tbody
-    - @blogs.each do |blog|
+    - @blog.each do |blog|
       %tr
         %td= blog.name
         %td= blog.title
         %td= blog.content
         %td= blog.tag
         %td= link_to 'Show', blog
-        %td= link_to 'Edit', edit_blog_path(blog)
-        %td= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
+        - if blog.user == current_user #|| current_user.admin?
+          %td= link_to 'Edit', edit_blog_path(blog)
+          %td= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
