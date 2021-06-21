@@ -21,7 +21,7 @@ class BlogsController < ApplicationController
     @blog = Blog.order('created_at desc')
     return if params[:tag].blank?
 
-    @blogs = @blogs.where(tag: params[:tag])
+    @blog = @blog.where(tag: params[:tag])
 
     respond_to do |format|
       format.html
