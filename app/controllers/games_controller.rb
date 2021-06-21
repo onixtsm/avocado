@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
-  def catcher
-  end
+  def index; end
+
+  def catcher; end
 end

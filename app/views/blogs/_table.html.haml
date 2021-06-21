@@ -1,0 +1,19 @@
+%table#table
+  %thead
+    %tr
+      %th Name
+      %th Title
+      %th Content
+      %th Tag
+
+  %tbody
+    - @blog.each do |blog|
+      %tr
+        %td= simple_format(blog.name)
+        %td= simple_format(blog.title)
+        %td= simple_format(blog.content)
+        %td= simple_format(blog.tag)
+        %td= link_to 'Show', blog
+        - if blog.user == current_user || current_user.try(:admin?)
+          %td= link_to 'Edit', edit_blog_path(blog)
+          %td= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }

@@ -1,0 +1,10 @@
+%h1 Listing blogs
+
+.container
+  .tools
+    = form_with method: :get do |f|
+      = f.select :tag, @tags, {}, {class: 'select_bar'}
+      = button_tag 'Find'
+      = link_to 'Clear', blogs_path, remote: true, class: 'button'
+  .content
+    = render 'table'

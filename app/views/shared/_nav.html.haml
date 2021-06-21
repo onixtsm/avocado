@@ -1,6 +1,7 @@
 %nav
   %ul
     - { "Home" => root_path,
+      "Blog" => blogs_path,
       "Game" => games_catcher_path,
       "About" => home_about_path }.each do |k, v|
       - if current_page?(v) 

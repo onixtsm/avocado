@@ -1,35 +1,34 @@
 nav {
-        width: 100%;
-        display: block;
-        background-color: gray;
-        height: auto;
-        overflow: hidden;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border-bottom: #b00b69 2px solid;
+  box-shadow: #b00b69 0 0 10px;
 }
 
 nav ul {
-        list-style-type: none;
-        width: 100%;
-        margin: 0;
-        padding: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  border-bottom: #b00b69;
+
+
 }
 
 li {
-        float: left;
-        border-right: black 1px solid;
-}
-
-li:last-child {
-        border: none;
+  margin: auto 30px;
+  display: inline-block;
 }
 
 li a {
-        color: white;
-        display: block;
-        text-align: center;
-        padding: 1.2em;
-        text-decoration: none;
+  display: block;
+  padding: 1.2em;
+  text-decoration: underline;
+  font-size: 1.3em;
+  color: hsl(326, 88%, 37%);
 }
 
 .current {
-        background-color: #606060;
+  font-weight: 700;
 }

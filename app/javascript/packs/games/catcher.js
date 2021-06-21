@@ -1,118 +1,112 @@
-var canvas, ctx, points, HP, eater, started;
-var step = 10;
-$().ready(function() {
-	canvas = document.getElementById("main_canvas");
-	ctx = canvas.getContext("2d");
-	document.addEventListener("keydown", function(key) { 
-		if (started) {
-			eater.move(key);
-		}
-	}); 
+import {Block} from "./block"
+import {keyboardController} from "../shared/keys"
+
+var canvas, ctx, ectx, points, HP, eater, interval;
+
+$(document).ready(() => {
+    canvas = document.getElementById("main_canvas");
+    ctx = canvas.getContext("2d");
+    ectx = document.getElementById("other_canvas").getContext("2d");
+
 });
-class Block {
-	constructor(_size, _color) {
-		this.width = _size;
-		this.height = _size / 2;
-		this.color = _color;
-};
 
-	draw() {
-
-		ctx.fillStyle = this.color;
-		ctx.fillRect(this.x, this.y, this.width, this.height);
-
-	};
-
-	remove() {
-		ctx.clearRect(this.x, this.y, this.width, this.height)
-
-
-	};
-
-};
+class SmallBlock extends Block {
+    constructor(_size, _color) {
+        super(null, null, _size, _size, _color);
+        this.x = Math.floor(Math.random() * (canvas.width - _size));
+        this.y = -_size
+    };
+}
 
 class BigBlock extends Block {
-	constructor(_size, _color) {
-		super(_size, _color);
-		this.x = canvas.width / 2 - _size / 2;
-		this.y = canvas.height - _size / 2;
-		};
-	//movement
-	move(key) {
-		ctx.clearRect(this.x, this.y, this.width, this.height);
-		if (!(this.x - step < 0)) {
-			if (key.keyCode == 37 || key.keyCode == 72 || key.keyCode == 65) {
-				this.x -= step;
-			}
-		}
-		if (this.x < canvas.width - this.width) {
-			if (key.keyCode == 39 || key.keyCode == 76 || key.keyCode == 68) {
-				this.x += step;
-			}
-		};
-		key.preventDefault();
-		this.draw();
-		
-	};
-
-}; 
-class SmallBlock extends Block {
-	constructor(_size, _color) {
-		super(_size, _color);
-		this.x = Math.floor(Math.random() * (canvas.width - _size));
-		this.y = -_size 
-		};
-	fall(vx, vy) {
-		ctx.clearRect(this.x, this.y, this.width, this.height)
-		this.x = this.x + vx;
-		this.y = this.y + vy;
-		this.draw();
-		
-	};
+    constructor(_size, _color) {
+        super(null, null, _size * 2, _size / 2, _color);
+        this.x = canvas.width / 2 - _size / 2;
+        this.y = canvas.height - _size / 4;
+    }
 };
 
-window.start = function() {
-	started = true;
-	ctx.clearRect(0, 0, canvas.width, canvas.height)
-	points = 0;
-	HP = 3;
-	$("[name='button']").hide();
-	eater = new BigBlock(20, "pink");
-	var smallBlocks = [];
-	interval = setInterval(function() { game(smallBlocks); }, 1000/16);
-	canvas.focus();
-}
-function game(smallBlocks) {
-	eater.draw();
-	$("#pointCounter").text(points);
-	$("#HPcounter").text(HP);
-	if (smallBlocks.length == 0) {
-		var block = new SmallBlock(10, "red");
-		smallBlocks.push(block);
-	}
-	for (i = 0; i < smallBlocks.length; i++) {
-		if (HP == 0) {
-			started = !started
-			clearInterval(interval);
-			$("[name='button']").show();
-			return;
-		}
-		let b = smallBlocks[i]
-		b.fall(0, 5);
-		if (b.x + b.width >= eater.x && b.x <= eater.x + eater.width) {
-			if (b.y >= eater.y && b.y <= eater.y) {
-				b.remove();
-				smallBlocks.splice(i, 1);
-				points++
-			};
-		};
-		if (b.y >= canvas.height) {
-			b.remove();
-			smallBlocks.splice(i, 1);
-			HP--
+window.start = () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+    ectx.clearRect(0, 0, canvas.width, canvas.height)
+    points = 0;
+    HP = 3;
+    $("[name='button']").hide();
+    eater = new BigBlock(20, "black");
+    var smallBlocks = [];
+    keyboardController({
+        "65, 37, 72": {
+            interval: 1000 / 32, callback: () => {
+                eater.remove(ectx)
+                eater.move(-7, 0, canvas.width, canvas.height);
+                eater.draw(ectx);
+            }
+        },
+        "68, 39, 76": {
+            interval: 1000 / 32, callback: () => {
+                eater.remove(ectx);
+                eater.move(7, 0, canvas.width, canvas.height);
+                eater.draw(ectx);
+            }
+        }
+    })
 
-		};
-	};
+    interval = setInterval(() => {
+        game(smallBlocks);
+    }, 1000 / 30);
+
+    canvas.focus();
+}
+
+function game(smallBlocks) {
+    eater.draw(ectx);
+    $("#pointCounter").text(points);
+    $("#HPcounter").text(HP);
+    if (smallBlocks.length == 0) {
+        var block = new SmallBlock(10, "black");
+        smallBlocks.push(block);
+    }
+
+    for (var i = 0; i < smallBlocks.length; i++) {
+        if (HP == 0) {
+            clearInterval(interval);
+            $("[name='button']").show();
+            keyboardController({
+                "65, 37, 72": {
+                    interval: 1000 / 16, callback: () => {
+                    }
+                },
+                "68, 39, 76": {
+                    interval: 1000 / 16, callback: () => {
+                    }
+                }
+            })
+            return;
+        }
+
+        let b = smallBlocks[i]
+        b.remove(ctx);
+        b.move(0, 3);
+        b.draw(ctx);
+
+        if (b.x + b.width >= eater.x && b.x <= eater.x + eater.width) {
+            if (b.y >= eater.y) {
+                b.remove(ctx);
+                smallBlocks.splice(i, 1);
+                points++
+            }
+            ;
+        }
+        ;
+        if (b.y >= canvas.height) {
+            b.remove(ctx);
+            smallBlocks.splice(i, 1);
+            HP--
+
+        }
+        ;
+    }
+    ;
 };
 
 

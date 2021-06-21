@@ -1,9 +1,10 @@
-%header
-  .greeting_text
-    %p Welcome to my website!
-
-= render 'shared/nav'
-
-%h2.heading Future
-- $text.each do |t| 
-  %p.text= t
+.container
+  .column.left
+    - @blogs.each do |b|
+      .blog_box
+        %p.post_author= b.name
+        %p.post_heading= b.title
+        %p.post_tag= b.tag
+        %p.post_body= simple_format(b.content)
+  .column.right
+    %p Under construction...

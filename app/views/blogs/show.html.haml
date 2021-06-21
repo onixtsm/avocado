@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Name:
+  = @blog.name
+%p
+  %b Title:
+  = @blog.title
+%p
+  %b Content:
+  = simple_format(@blog.content)
+
+- if @blog.user == current_user || current_user.try(:admin?)
+  = link_to 'Edit', edit_blog_path(@blog)
+  \|
+  = link_to 'Destroy', @blog, method: :delete, data: { confirm: 'Are you sure?' }
+  \|
+= link_to 'Back', blogs_path
