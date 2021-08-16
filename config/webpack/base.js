@@ -1,5 +1,7 @@
-const { webpackConfig, merge } = require('@rails/webpacker')
-//const customConfig = require('./custom')
+const { webpackConfig } = require('@rails/webpacker')
+// const { merge } = require('webpack-merge')
+const fs = require('fs')
 
-//module.exports = merge(webpackConfig , customConfig)
+fs.writeFile('webpack.js.json', JSON.stringify(webpackConfig, undefined, 2), (err) => {console.log(err)})
+
 module.exports = webpackConfig

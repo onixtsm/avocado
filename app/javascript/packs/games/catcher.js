@@ -1,7 +1,9 @@
+import * as $ from 'jquery'
+
 import {Block} from "./block"
 import {keyboardController} from "../shared/keys"
 
-var canvas, ctx, ectx, points, HP, eater, interval;
+let canvas, ctx, ectx, points, HP, eater, interval;
 
 $(document).ready(() => {
     canvas = document.getElementById("main_canvas");
@@ -24,9 +26,12 @@ class BigBlock extends Block {
         this.x = canvas.width / 2 - _size / 2;
         this.y = canvas.height - _size / 4;
     }
-};
+}
 
 window.start = () => {
+    if (HP > 0) {
+        return
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ectx.clearRect(0, 0, canvas.width, canvas.height)
     points = 0;
@@ -62,13 +67,13 @@ function game(smallBlocks) {
     eater.draw(ectx);
     $("#pointCounter").text(points);
     $("#HPcounter").text(HP);
-    if (smallBlocks.length == 0) {
-        var block = new SmallBlock(10, "black");
+    if (!smallBlocks.length) {
+        let block = new SmallBlock(10, "black");
         smallBlocks.push(block);
     }
 
-    for (var i = 0; i < smallBlocks.length; i++) {
-        if (HP == 0) {
+    for (let i = 0; i < smallBlocks.length; i++) {
+        if (!HP) {
             clearInterval(interval);
             $("[name='button']").show();
             keyboardController({
@@ -95,18 +100,18 @@ function game(smallBlocks) {
                 smallBlocks.splice(i, 1);
                 points++
             }
-            ;
+
         }
-        ;
+
         if (b.y >= canvas.height) {
             b.remove(ctx);
             smallBlocks.splice(i, 1);
             HP--
 
         }
-        ;
+
     }
-    ;
-};
+
+}
 
 

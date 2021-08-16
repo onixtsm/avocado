@@ -1,15 +1,7 @@
-enviroment.config.merge = {
+
+module.exports = {
     output: {
         library: ['packs', '[name]'],
-	libraryTarget: 'var'
+	    libraryTarget: 'var'
     }
 };
-
-//module.exports = [
-	//{
-		//output: {
-			//filename: './games/catcher',
-			//libraryTarget: 
-		//}
-	//}
-//];
