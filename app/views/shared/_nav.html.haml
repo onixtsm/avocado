@@ -4,9 +4,17 @@
       "Blog" => blogs_path,
       "Game" => games_catcher_path,
       "About" => home_about_path }.each do |k, v|
-      - if current_page?(v) 
+      - if current_page?(v) || (request.path.include?(v) && v != root_path)
         %li.current= link_to k, v
-      - elsif request.path.include?(v) && v != root_path
-        %li.current= link_to k, v
-      - else 
+      - else
         %li= link_to k, v
+    - if user_signed_in?
+      %li.signOut= link_to "Sign out", destroy_user_session_path, method: :delete
+      %li.edit= link_to "Edit account", edit_user_registration_path
+    - elsif Rails.env.development?
+      %li.signIn= link_to "Sign in", new_user_session_path
+      %li.signUp= link_to "Sign up", new_user_registration_path
+    - else
+      /
+        %li.signIn= link_to "Sign in", new_user_session_path
+        %li.signUp= link_to "Sign up", new_user_registration_path
