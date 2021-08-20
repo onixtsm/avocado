@@ -3,8 +3,11 @@
     - @blogs.each do |b|
       .blog_box
         %p.post_author= b.name
-        %p.post_heading= b.title
+        %h3.post_heading= link_to b.title, b
         %p.post_tag= b.tag
-        %p.post_body= simple_format(b.content)
+        - sentence_array= b.content.split(".")
+        - first_sentence= sentence_array[0] + "." if sentence_array[0]
+        - second_sentence= sentence_array[1].split.first + "..." if sentence_array[1]
+        %p.post_body= "#{first_sentence} #{second_sentence}"
   .column.right
     %p Under construction...
