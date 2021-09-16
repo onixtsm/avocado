@@ -1,0 +1,16 @@
+@import 'colors';
+
+.footer_box {
+  width: 100%;
+  //display: flex;
+  border-top: 2px $fg_color solid;
+  font-size: 2rem;
+  height: 10%;
+  margin-top: auto;
+
+  a {
+    margin: auto;
+    display: block;
+    text-align: center;
+  }
+}

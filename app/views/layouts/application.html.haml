@@ -14,5 +14,6 @@
     - if File.exist? ("#{Rails.root}/app/javascript/packs/#{controller_name}/#{action_name}.js")
       = javascript_pack_tag params[:controller]+ "/" + params[:action]
   %body
-    = render('shared/nav') #unless action_name == "index" #short time fix. Have to use parametrs instead
+    = render 'shared/nav' #unless action_name == "index" #short time fix. Have to use parametrs instead
     = yield
+    = render 'shared/footer'

@@ -4,6 +4,7 @@
   "dependencies": {
     "@babel/core": "^7.0.0-0",
     "@babel/plugin-proposal-private-methods": "^7.14.5",
+    "@fortawesome/fontawesome-free": "^5.15.4",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
     "@rails/ujs": "^6.0.0",
@@ -25,17 +26,7 @@
   "babel": {
     "presets": [
       "./node_modules/@rails/webpacker/package/babel/preset.js"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties",
-      "@babel/plugin-proposal-private-methods"
     ]
-  },
-  "browserslist": [
-    "defaults"
-  ],
-  "babel": {
-    "presets": ["./node_modules/@rails/webpacker/package/babel/preset.js"]
   },
   "browserslist": [
     "defaults"
