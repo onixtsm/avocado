@@ -21,7 +21,6 @@
 
   .post_author {
     margin: 5px;
-    background: $bg_color;
     display: inline-block;
     text-align: center;
     position: absolute;
@@ -43,6 +42,10 @@
     float: right;
     font-style: italic;
     text-align: right;
+  }
+
+  .post_body {
+    margin: 1rem auto;
   }
 
 
