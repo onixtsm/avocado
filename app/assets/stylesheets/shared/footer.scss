@@ -1,16 +1,18 @@
 @import 'colors';
 
-.footer_box {
+footer {
   width: 100%;
-  //display: flex;
+  position: fixed;
+  text-align: center;
   border-top: 2px $fg_color solid;
-  font-size: 2rem;
+  font-size: 4rem;
   height: 10%;
   margin-top: auto;
+  display: flex;
 
   a {
     margin: auto;
-    display: block;
+    display: inline-block;
     text-align: center;
   }
 }

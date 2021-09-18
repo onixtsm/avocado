@@ -1,7 +1,3 @@
-// Place all the styles related to the Home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
-
 @import 'shared/colors';
 @import 'shared/container';
 
@@ -10,48 +6,16 @@
   width: 50%;
   margin: 5%;
   padding: 3px;
+
 }
 
-.blog_box {
-  padding: 0.7em;
-  margin: 5% auto;
-  border-radius: 15px;
-  border: $fg_color 2px solid;
+.info_box {
   position: relative;
-
-  .post_author {
-    margin: 5px;
-    display: inline-block;
-    text-align: center;
-    position: absolute;
-    font-size: 1.1rem;
-    transform: translate(10px, -30px);
-  }
-
-  .post_heading {
-    text-decoration: none;
-    width: 80%;
-    display: inline-block;
-    font-size: 1.4rem;
-    text-transform: uppercase;
-  }
-
-  .post_tag {
-    display: inline-block;
-    width: 20%;
-    float: right;
-    font-style: italic;
-    text-align: right;
-  }
-
-  .post_body {
-    margin: 1rem auto;
-  }
-
-
-
-
+  top: 50%;
+  transform: translateY(-50%);
 }
+
+
 
 @media screen and (max-width: 900px) {
   .container {
@@ -63,6 +27,7 @@
     .left {
       float: left;
     }
+
     .right {
       float: right;
     }

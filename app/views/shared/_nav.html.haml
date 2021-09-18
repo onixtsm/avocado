@@ -2,8 +2,7 @@
   %ul
     - { "Home" => root_path,
       "Blog" => blogs_path,
-      "Game" => games_catcher_path,
-      "About" => home_about_path }.each do |k, v|
+      "Game" => games_catcher_path }.each do |k, v|
       - if current_page?(v) || (request.path.include?(v) && v != root_path)
         %li.current= link_to k, v
       - else

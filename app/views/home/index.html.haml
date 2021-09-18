@@ -1,13 +1,8 @@
 .container
   .column.left
-    - @blogs.each do |b|
-      .blog_box
-        %p.post_author= b.name
-        %h3.post_heading= link_to b.title, b
-        %p.post_tag= b.tag
-        - sentence_array= b.content.split(".")
-        - first_sentence= sentence_array[0] + "." if sentence_array[0]
-        - second_sentence= sentence_array[1].split.first + "..." if sentence_array[1]
-        %p.post_body= "#{first_sentence} #{second_sentence}"
+    .info_box
+      %p This is my website. It's created to show of my skill ins in programming and being able to post my thoughts without any censure.
+      %p= "Also you can checkout my #{link_to 'Reddit', 'https://reddit.com/user/_0N1X_', target: '_blank'} and my #{link_to 'Github', '#', target: '_blank'}".html_safe
+
   .column.right
     %p Under construction...

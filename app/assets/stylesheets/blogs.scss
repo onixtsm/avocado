@@ -4,6 +4,7 @@
 
 @import "shared/colors";
 @import "shared/container";
+
 .tools {
   width: 100%;
 
@@ -33,4 +34,43 @@
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
+}
+
+.blog_box {
+  padding: 0.7em;
+  margin: 5% auto;
+  border-radius: 15px;
+  border: $fg_color 2px solid;
+  position: relative;
+
+  .post_author {
+    margin: 5px;
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    font-size: 1.1rem;
+    transform: translate(10px, -30px);
+  }
+
+  .post_heading {
+    text-decoration: none;
+    width: 80%;
+    display: inline-block;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+
+  .post_tag {
+    display: inline-block;
+    width: 20%;
+    float: right;
+    font-style: italic;
+    text-align: right;
+  }
+
+  .post_body {
+    margin: 1rem auto;
+  }
+
+
 }

@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users#, skip: :registrations, controllers: { sessions: 'users/sessions' }
   root 'home#index'
-  get 'home/about'
 
   resources :blogs, path: 'blog'
   get 'games', to: 'games#index'
