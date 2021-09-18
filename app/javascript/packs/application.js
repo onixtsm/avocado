@@ -3,11 +3,13 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+import jquery from 'jquery';
+window.$ = window.jquery = jquery;
+
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-import * as $ from 'jquery'
 
 import "@fortawesome/fontawesome-free/js/all";
 

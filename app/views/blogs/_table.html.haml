@@ -1,22 +1,29 @@
-%table#table
-  %thead
-    %tr
-      %th Name
-      %th Title
-      %th Content
-      %th Tag
-
-  %tbody
-    - @blog.each do |blog|
-      %tr
-        %td= simple_format(blog.name)
-        %td= simple_format(blog.title)
-        %td= simple_format(blog.content)
-        %td= simple_format(blog.tag)
-        %td= link_to 'Show', blog
-        - if blog.user == current_user || current_user.try(:admin?)
-          %td= link_to 'Edit', edit_blog_path(blog)
-          %td= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
-
-
-.blog_box
+-#%table#table
+-#  %thead
+-#    %tr
+-#      %th Name
+-#      %th Title
+-#      %th Content
+-#      %th Tag
+-#
+-#  %tbody
+-#    - @blog.each do |blog|
+-#      %tr
+-#        %td= simple_format(blog.name)
+-#        %td= simple_format(blog.title)
+-#        %td= simple_format(blog.content)
+-#        %td= simple_format(blog.tag)
+-#        %td= link_to 'Show', blog
+-#        - if blog.user == current_user || current_user.try(:admin?)
+-#          %td= link_to 'Edit', edit_blog_path(blog)
+-#          %td= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
+#blogs
+  - @blog.each do |b|
+    .blog_box
+      %p.post_author= b.name
+      %h3.post_heading= link_to b.title, b
+      %p.post_tag= b.tag
+      - sentence_array= b.content.split(".")
+      - first_sentence= sentence_array[0] + "." if sentence_array[0]
+      - second_sentence= sentence_array[1].split.first + "..." if sentence_array[1]
+      %p.post_body= "#{first_sentence} #{second_sentence}"

@@ -11,7 +11,7 @@
     "@rails/webpacker": "^6.0.0-beta.7",
     "chokidar": "^3",
     "expose-loader": "^3.0.0",
-    "jquery": "^3.5.1",
+    "jquery": "^3.6.0",
     "terser-webpack-plugin": "^5.1.4",
     "turbolinks": "^5.2.0",
     "webpack": "^5.11.0",
