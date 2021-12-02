@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: https://sass-lang.com/
 
 @import "shared/colors";
-@import "shared/container";
 
 .tools {
   width: 100%;
@@ -13,6 +12,7 @@
 .container {
   max-width: 70%;
   display: block;
+  margin: 0 auto;
 }
 
 .select_bar {
@@ -69,9 +69,59 @@
     text-align: right;
   }
 
+  .date {
+    display: inline-block;
+    width: 20%;
+    float: right;
+    font-style: italic;
+    text-align: right;
+    margin: 1rem auto;
+  }
+
   .post_body {
+    width: 80%;
+    display: inline-block;
     margin: 1rem auto;
   }
 
 
 }
+
+
+// Show stuff //////
+
+.box {
+  font-size: 1.7rem;
+  max-width: 75ch;
+  margin: 1em auto;
+  h1 {
+    margin-bottom: 5%;
+  }
+  p {
+    //margin-bottom: 5%;
+  }
+  .h6 {
+    font-style: italic;
+    font-size: 3rem;
+    text-decoration: none;
+  }
+  .float {
+    display: block;
+    height: auto;
+    .child {
+      display: inline-block;
+    }
+    .left {
+      float: left;
+    }
+    .right {
+      float: right;
+    }
+
+  }
+  .link {
+    display: block;
+  }
+
+}
+
