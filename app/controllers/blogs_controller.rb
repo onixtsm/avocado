@@ -7,6 +7,12 @@ class BlogsController < ApplicationController
   before_action :set_tags
   before_action :correct_user, only: [:edit, :update, :destroy]
 
+
+
+  def get_date(pattern = "%d-%m-%Y")
+    created_at.strftime(pattern)
+  end
+
   def correct_user
     if !current_user.admin?
       @blog = current_user.blogs.find_by(params[:id])
@@ -39,8 +45,6 @@ class BlogsController < ApplicationController
 
   # GET /blogs/new
   def new
-
-    # @blog = Blog.new
     @blog = current_user.blogs.new()
   end
 
@@ -49,7 +53,6 @@ class BlogsController < ApplicationController
 
   # POST /blogs or /blogs.json
   def create
-    # @blog = Blog.new(blog_params)
     @blog = current_user.blogs.build(blog_params)
     @blog.name = current_user.name
     @blog.user_id = current_user.id

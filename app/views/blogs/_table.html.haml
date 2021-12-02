@@ -1,7 +1,3 @@
--#        %td= link_to 'Show', blog
--#        - if blog.user == current_user || current_user.try(:admin?)
--#          %td= link_to 'Edit', edit_blog_path(blog)
--#          %td= link_to 'Destroy', blog, method: :delete, data: { confirm: 'Are you sure?' }
 #blogs
   - @blog.each do |b|
     .blog_box
@@ -12,3 +8,4 @@
       - first_sentence= sentence_array[0] + "." if sentence_array[0]
       - second_sentence= sentence_array[1].split.first + "..." if sentence_array[1]
       %p.post_body= "#{first_sentence} #{second_sentence}"
+      %p.date= get_date(b)

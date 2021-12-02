@@ -7,7 +7,8 @@ ruby '3.0.1'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'bcrypt_pbkdf', '>= 1.0', '< 2.0'
-gem 'bootsnap', '>= 1.4.2', require: false
+#gem 'bootsnap', '>= 1.4.2', require: false
+gem 'bootsnap', '~> 1.1', '>= 1.1.7'
 gem 'capistrano', '~> 3.11'
 gem 'capistrano-passenger', '>= 0.2.1'
 gem 'capistrano-rails', '~> 1.4'
